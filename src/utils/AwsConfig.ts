@@ -7,13 +7,23 @@ export const AwsConfig = {
     userPoolWebClientId: process.env.NEXT_PUBLIC_AWS_AUTH_APP_CLIENT_ID,
     oauth: {
       domain: process.env.NEXT_PUBLIC_AWS_AUTH_DOMAIN,
-      scope: ['profile', 'openid', 'aws.cognito.signin.user.admin'],
+      scope: ['profile', 'openid', 'aws.cognito.signin.user.admin','phone',
+      'email'],
       redirectSignIn: process.env.NEXT_PUBLIC_AWS_AUTH_REDIRECT_SIGN_IN,
       redirectSignOut: process.env.NEXT_PUBLIC_AWS_AUTH_REDIRECT_SIGN_OUT,
       clientId: process.env.NEXT_PUBLIC_AWS_AUTH_APP_CLIENT_ID,
       responseType: 'code',
     },
-  },
+  }, 
+  aws_cognito_username_attributes : [
+        "EMAIL"
+    ],
+  aws_cognito_social_providers: [
+        "FACEBOOK",
+        "GOOGLE",
+        "APPLE"
+    ]
+ ,
   API: {
     endpoints: [
       {

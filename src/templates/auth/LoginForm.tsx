@@ -1,6 +1,6 @@
-import type { CognitoUser } from '@aws-amplify/auth';
+import type { CognitoUser } from '@aws-amplify/auth'; 
+import { Amplify, Auth, Hub } from 'aws-amplify';
 import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth';
-import { Auth } from 'aws-amplify';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import type { Dispatch, SetStateAction } from 'react';
@@ -32,7 +32,9 @@ const LoginForm = (props: ILoginFormProps) => {
   const [formGlobalError, setFormGlobalError] = useState<string | null>(null);
 
   const handleSignInGoogle = () => {
-    Auth.federatedSignIn({ provider: CognitoHostedUIIdentityProvider.Google });
+    Auth.federatedSignIn({
+      provider: CognitoHostedUIIdentityProvider.Google,
+    });
   };
 
   const handleSignInFacebook = () => {

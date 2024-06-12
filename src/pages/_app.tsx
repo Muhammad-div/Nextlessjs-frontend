@@ -3,7 +3,7 @@ import '../styles/global.css';
 import { Amplify, API } from 'aws-amplify';
 import type { AppProps } from 'next/app';
 import type { ReactElement } from 'react';
-import { ErrorBoundary, useErrorHandler } from 'react-error-boundary';
+import { ErrorBoundary } from 'react-error-boundary';
 import { SWRConfig } from 'swr';
 
 import { DemoBadge } from '@/badge/DemoBadge';
@@ -21,8 +21,7 @@ type AppPropsWithLayout = AppProps & {
 
 const MyAppSWRConfig = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page: ReactElement) => page);
-  const handleError = useErrorHandler();
-
+ 
   return (
     <SWRConfig
       value={{
@@ -32,8 +31,7 @@ const MyAppSWRConfig = ({ Component, pageProps }: AppPropsWithLayout) => {
           if (
             error?.response?.status === 500 &&
             error?.response?.data?.errors === 'not_member'
-          ) {
-            handleError(error);
+          ) { 
           }
         },
       }}
