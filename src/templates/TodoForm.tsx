@@ -2,7 +2,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { API } from 'aws-amplify';
 import { useRouter } from 'next/dist/client/router';
 import { useState } from 'react';
-import { useErrorHandler } from 'react-error-boundary';
+import { useErrorBoundary } from 'react-error-boundary';
 import { useForm } from 'react-hook-form';
 import { mutate } from 'swr';
 
@@ -39,7 +39,7 @@ const TodoForm = (props: ITodoFormProps) => {
   } = useForm<ITodo>({
     values: props.defaultValues, // Here we use `values` instead of `defaultValues` because we don't want the cache
   });
-  const handleGlobalError = useErrorHandler();
+  const handleGlobalError:any = useErrorBoundary();
   const [formGlobalError, setFormGlobalError] = useState<string | null>(null);
 
   const saveAsync = useAsync(async (data) => {

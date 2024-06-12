@@ -1,7 +1,8 @@
 import { ErrorMessage } from '@hookform/error-message';
 import { API } from 'aws-amplify';
 import { useState } from 'react';
-import { useErrorHandler } from 'react-error-boundary';
+// import { useErrorBoundary } from 'react-error-boundary';
+
 import { useForm } from 'react-hook-form';
 import { mutate } from 'swr';
 
@@ -11,6 +12,7 @@ import { Label } from '@/form/Label';
 import { useAsync } from '@/hooks/UseAsync';
 import { useAuth } from '@/hooks/UseAuth';
 import { setFormError } from '@/utils/Forms';
+import { useErrorBoundary } from 'react-error-boundary';
 
 type IChangeDisplayNameForm = {
   displayName: string;
@@ -29,7 +31,7 @@ const ChangeTeamDisplayName = (props: IChangeTeamDisplayNameProps) => {
     setError,
     formState: { errors },
   } = useForm<IChangeDisplayNameForm>();
-  const handleGlobalError = useErrorHandler();
+  const handleGlobalError:any = useErrorBoundary();
   const [formGlobalError, setFormGlobalError] = useState<string | null>(null);
 
   const changeTeamDisplayNameAsync = useAsync(

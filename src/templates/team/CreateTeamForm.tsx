@@ -2,7 +2,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { API } from 'aws-amplify';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { useErrorHandler } from 'react-error-boundary';
+// import { useErrorBoundary } from 'react-error-boundary';
 import { useForm } from 'react-hook-form';
 import { mutate } from 'swr';
 
@@ -14,6 +14,7 @@ import { useAuth } from '@/hooks/UseAuth';
 import { setFormError } from '@/utils/Forms';
 
 import { FormGlobalError } from '../FormGlobalError';
+import { useErrorBoundary } from 'react-error-boundary';
 
 type ICreateTeamForm = {
   userEmail: string;
@@ -29,7 +30,7 @@ const CreateTeamForm = () => {
   } = useForm<ICreateTeamForm>();
   const { providerInfo, setCurrentTeamInd, teamList } = useAuth();
   const router = useRouter();
-  const handleGlobalError = useErrorHandler();
+  const handleGlobalError:any = useErrorBoundary();
   const [formGlobalError, setFormGlobalError] = useState<string | null>(null);
 
   const createTeamAsync = useAsync(async (data: ICreateTeamForm) => {

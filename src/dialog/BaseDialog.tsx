@@ -1,3 +1,4 @@
+// import { Dialog } from '@headlessui/react';
 import { Dialog } from '@headlessui/react';
 import type { ReactNode } from 'react';
 
@@ -22,8 +23,7 @@ const BaseDialog = (props: IBaseDialogProps) => (
     onClose={props.handleClose}
   >
     <div className="flex min-h-screen items-center justify-center">
-      <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
-
+      {/* <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" /> */}
       <div className="relative my-8 w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
         {props.children}
       </div>

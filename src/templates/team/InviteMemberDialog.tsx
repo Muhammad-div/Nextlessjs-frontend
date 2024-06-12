@@ -1,7 +1,7 @@
 import { ErrorMessage } from '@hookform/error-message';
 import { API } from 'aws-amplify';
 import { useState } from 'react';
-import { useErrorHandler } from 'react-error-boundary';
+import { useErrorBoundary } from 'react-error-boundary';
 import { Controller, useForm } from 'react-hook-form';
 import { mutate } from 'swr';
 
@@ -39,7 +39,7 @@ const InviteMemberDialog = (props: IInviteMemberProps) => {
       roleOption: RoleOptionList[0],
     },
   });
-  const handleGlobalError = useErrorHandler();
+  const handleGlobalError:any = useErrorBoundary();
   const [formGlobalError, setFormGlobalError] = useState<string | null>(null);
 
   const inviteMemberAsync = useAsync(async (data: IInviteMemberForm) => {

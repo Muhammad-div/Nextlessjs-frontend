@@ -1,5 +1,5 @@
 import type { CognitoUser } from '@aws-amplify/auth'; 
-import { Amplify, Auth, Hub } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
 import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
